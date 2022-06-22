@@ -1,5 +1,6 @@
 package co.com.gm;
 
+import co.com.gm.domain.Persona;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -16,9 +17,16 @@ public class ControladorInicio {
     @GetMapping("/")
     public String inicio(Model model){
         String mensaje = "Empezando con Thymeleaf";
+        Persona persona = new Persona();
+        persona.setNombre("Diego");
+        persona.setApellido("Castro");
+        persona.setEmail("dcastro@gmail.com");
+        persona.setTelefono("31056563834");
+
         log.info("ejecutando el controlador Spring MVC");
         model.addAttribute("mensaje", mensaje);
         model.addAttribute("saludo", saludo);
+        model.addAttribute("persona", persona);
         return "index";
     }
 
